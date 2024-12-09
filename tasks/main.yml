@@ -1,0 +1,19 @@
+---
+# tasks file for myrole
+  - name: install httpd
+    ansible.builtin.yum:
+      name: httpd
+      state: present
+
+  - name: start httpd
+    ansible.builtin.systemd:
+      name: httpd
+      state: started
+
+  - name: copy files
+    ansible.builtin.copy:
+      src: files/index.html
+      dest: /var/www/html
+      owner: root
+      group: root
+                   
